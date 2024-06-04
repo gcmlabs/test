@@ -14,8 +14,31 @@ echo 'server {
         }
 }' > /etc/nginx/sites-available/test-service
 
-if [ ! -L /etc/nginx/sites-available/test-service ]; then
-  ln -s /etc/nginx/sites-available/test-service /etc/nginx/sites-enabled/test-service
+if [ ! -L /etc/nginx/sites-available/helloworld ]; then
+  ln -s /etc/nginx/sites-available/helloworld /etc/nginx/sites-enabled/helloworld
 fi
 
 systemctl restart nginx
+
+mkdir /var/log/helloworld
+touch /var/log/helloworld/hw_service.log
+touch /var/log/helloworld/hw_service_err.log
+
+echo '[Unit]
+Description=helloworld
+After=network.target
+
+[Service]
+Type=simple
+User=ec2-user
+WorkingDirectory=/var/www/helloworld
+ExecStart=/usr/bin/node index.js
+Restart=on-failure
+StandardOutput=append:/var/log/helloworld/hw_service.log
+StandardError=append:/var/log/helloworld/hw_service_err.log
+
+[Install]
+WantedBy=multi-user.target' > /lib/systemd/system/helloworld.service 
+
+systemctl daemon-reload
+systemctl enable helloworld

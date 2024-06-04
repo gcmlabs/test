@@ -2,9 +2,9 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /var/www/hrtools-admin
+    destination: /var/www/helloworld
 permissions:
-  - object: /var/www/hrtools-admin
+  - object: /var/www/helloworld
     owner: www-data
     group: www-data
 

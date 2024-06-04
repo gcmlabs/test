@@ -1,4 +1,4 @@
 #!/bin/bash
 
 systemctl start nginx
-systemctl start test-service
+systemctl start helloworld
