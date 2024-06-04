@@ -23,7 +23,3 @@ hooks:
   ApplicationStart:
     - location: deployment_scripts/application-start.sh
       runas: root
-    - location: deployment_scripts/create-supervisor-config.sh
-      runas: root
-    - location: deployment_scripts/create-cron.sh
-      runas: ubuntu
