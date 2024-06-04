@@ -1,0 +1,29 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /var/www/hrtools-admin
+permissions:
+  - object: /var/www/hrtools-admin
+    owner: www-data
+    group: www-data
+
+hooks:
+  ApplicationStop:
+    - location: deployment_scripts/application-stop.sh
+      runas: root
+  BeforeInstall:
+    - location: deployment_scripts/create-nginx-config.sh
+      runas: root
+  AfterInstall:
+    - location: deployment_scripts/install-dependencies.sh
+      runas: root
+    - location: deployment_scripts/change-permissions.sh
+      runas: root
+  ApplicationStart:
+    - location: deployment_scripts/application-start.sh
+      runas: root
+    - location: deployment_scripts/create-supervisor-config.sh
+      runas: root
+    - location: deployment_scripts/create-cron.sh
+      runas: ubuntu
