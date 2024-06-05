@@ -7,8 +7,7 @@ phases:
       nodejs: 20  
   pre_build:
     commands:
-      - echo Installing source NPM dependencies...
-      - npm install
+      - echo "Build Successful" > test.txt
   post_build:
     commands:
       - echo Build completed on `date`
