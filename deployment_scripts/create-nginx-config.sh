@@ -2,7 +2,7 @@
 
 echo 'server {
         listen 80;
-        server_name _;
+        server_name helloworld-gcm.sandbox.soluzionifutura.it;
 
         location / {
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
