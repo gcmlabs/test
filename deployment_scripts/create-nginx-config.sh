@@ -30,7 +30,7 @@ After=network.target
 
 [Service]
 Type=simple
-User=ec2-user
+User=root
 WorkingDirectory=/var/www/helloworld
 ExecStart=/usr/bin/node index.js
 Restart=on-failure
