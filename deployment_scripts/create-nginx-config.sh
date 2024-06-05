@@ -12,7 +12,7 @@ echo 'server {
             proxy_set_header Upgrade $http_upgrade;
             proxy_set_header Connection "upgrade";
         }
-}' > /etc/nginx/sites-available/test-service
+}' > /etc/nginx/sites-available/helloworld
 
 if [ ! -L /etc/nginx/sites-available/helloworld ]; then
   ln -s /etc/nginx/sites-available/helloworld /etc/nginx/sites-enabled/helloworld
